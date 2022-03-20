@@ -8,6 +8,6 @@ The repo will include
 2. *Markdown files*
 3. *Code*
 
-**Here is the link to the Github Page**
+**Here is the link to the *index markdown* Github Page**
 
 **https://shakenrobot.github.io/stats220/**
