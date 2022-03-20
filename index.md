@@ -1,6 +1,27 @@
-# dnie495 meme
-
+# dnie495 Assignment 1 meme
 ![](my_meme.png)
+
+- This is my meme for the stats220 Assignment 1. I follow formula 1 as hobby so I decided to incorporate that into the assignment. 
+
+- I made this meme because I think it's relatable for many uni students (myself included) that leave things to the last minute.
+
+- The images are of formula 1 driver Fernando Alonso.
+
+Here is a link to the [Formula 1 site](https://www.formula1.com/) if you are interested in learning about formula 1.
+
+### Inspiration
+
+When I looked up meme templates the first that came up was the drake template below
+
+![](https://en.meming.world/images/en/thumb/0/07/Drakeposting.jpg/300px-Drakeposting.jpg)
+
+This was the main inspiration for my template.
+
+To make it new/original I adapted the format to f1 and switched the reactions around. 
+
+## meme code
+
+The R code to create the meme is below
 
 ```
 library(magick)
