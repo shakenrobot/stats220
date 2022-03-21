@@ -1,0 +1,128 @@
+---
+title: "Assignment 1"
+subtitle: "STATS 220 Semester One 2022"
+author: "Dennis Nieuwenhuizen - dnie495"
+date: '2022-03-19'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+library(magick)
+library(tidyverse)
+```
+
+## GitHub repository information
+
+[Github Repository](https://github.com/shakenrobot/stats220)
+
+This stats220 github repository includes Part A and Part B of my Assignment 1.
+
+It has a README.md file explaining the repository. It has a link to the Github Pages of Part A's section
+
+The index.md and my_meme.png are linked to Part A of the assignment which tackles creation of a meme in R. 
+
+The other index.Rmd and index.html files are linked to Part B of the assignment which tackles creation a gif in R.
+
+## Animated GIF creation
+
+For the gif creation I have decided to make a gif of a stick man doing a flip. 
+
+It has 12 frames in total.
+
+The first gif has no border and the second has a border. The border was used during gif creation to format the offset of the stick man.
+
+
+```{r}
+# gif creation
+
+#load in stick_man image I have created
+stick_man <- image_read("https://i.imgur.com/4IlQDMz.png") %>% image_scale(100)
+
+
+
+# create the 12 frames for the gif
+frame1 <- image_blank(color = "#FFFFFF", width = 500, height = 500)  %>%
+  image_scale(500) %>% image_composite(stick_man, offset = "+0+360")
+
+frame2 <- image_blank(color = "#FFFFFF", width = 500, height = 500)  %>%
+  image_scale(500) %>% image_composite(stick_man, offset = "+40+360")
+
+#create the rotations of the stick_man for following frames (3 - 8)
+stick_man_flip_1 <- image_rotate(stick_man, 60)
+stick_man_flip_2 <- image_rotate(stick_man, 120)
+stick_man_flip_3 <- image_rotate(stick_man, 180)
+stick_man_flip_4 <- image_rotate(stick_man, 240)
+stick_man_flip_5 <- image_rotate(stick_man, 300)
+stick_man_flip_6 <- image_rotate(stick_man, 360)
+
+frame3 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_1, offset = "+80+300")
+
+frame4 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_2, offset = "+120+240")
+
+frame5 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_3, offset = "+160+180")
+
+frame6 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_4, offset = "+200+240")
+
+frame7 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_5, offset = "+240+300")
+
+frame8 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man_flip_6, offset = "+280+360")
+
+frame9 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man, offset = "+320+360")
+
+frame10 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_scale(500) %>% image_composite(stick_man, offset = "+360+360")
+
+#adding nice flip! text
+frame11 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_annotate(text = "nice flip!", size = 100, gravity = "center")
+
+frame12 <- image_blank(color = "#FFFFFF", width = 500, height = 500) %>%
+  image_annotate(text = "nice flip!", size = 100, gravity = "center")
+  
+
+
+# putting the frames in order
+frames <- c(frame1, frame2, frame3, frame4, frame5, frame6, frame7, frame8, frame9, frame10, frame11, frame12)
+
+# create the final animation
+image_animate(frames)
+
+# write gif to a file 
+image_write(image_animate(frames), path = "flip_gif.gif")
+
+# animation with border (used in gif creation)
+frames <- image_border(frames, "black", "1x1")
+
+image_animate(frames, fps = 5)
+
+```
+
+#### css
+
+```{css}
+a:link, a:visited, a:hover, a:active {
+  color: #FFFF33
+}
+body {
+  background-color: #D2B4DE ;
+  font-family: "Verdana"
+}
+
+
+
+```
+## Learning reflection
+
+The main idea I learnt from module 1 was how to combine images together into different formats. It can be quite fun to create things you want to make with your own ideas/choices with code.
+
+Another key learning point would be commenting my code. After focusing more on using comments in Part B I noticed it was a lot easier to skim through code and understand where it fits together. In future assignments and with other coding languages I will definitely focus more on adding comments into projects.
+
+In relation to data technologies, I'm most interested in how I can use technologies to display large/big data in a visual friendly way. Having large data/datasets and finding the key information you need from them seems fun to do and interesting.
