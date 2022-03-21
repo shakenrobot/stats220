@@ -2,7 +2,7 @@
 
 ## dnie495
 
-This is my stats220 repository for my Assignments this semester 1 2022.
+This is the stats220 repository for my Assignments this semester 1 2022.
 
 The repo will include
 
